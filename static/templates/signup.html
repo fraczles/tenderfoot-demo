@@ -1,0 +1,70 @@
+            {% extends 'base.html' %}
+            
+            {% block jumbotron %}
+                <!-- Main jumbotron for a primary marketing message or call to action -->
+            <div class="jumbotron">
+              <div class="container">
+                <h1>TenderFoot!</h1>
+                <p><a class="btn btn-primary btn-lg" role="button">Learn more &raquo;</a></p>
+              </div>
+            </div>
+            {% endblock %}
+            
+            
+            {% block content %}
+            <div class="col-md-3"> <!-- col-size-#/12 -->
+          <h2>CONTENT</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div>
+        <div class="col-md-3">
+          <h2>CONTENT</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+       </div>
+        
+       <div class="col-md-3">
+            <script src="https://checkout.stripe.com/checkout.js"></script>
+        </br>
+        <h1> Support a teacher here</h1>
+        
+        </br>
+        </br>
+        </br>
+<button id="customButton" class="btn btn-success btn-block">Donate  </button>
+
+<script>
+  var handler = StripeCheckout.configure({
+    key: 'pk_test_zqGtvGcQWCxIPCPhPHNXW1xF',
+    image: '/square-image.png',
+    token: function(token) {
+      // Use the token to create the charge with a server-side script.
+      // You can access the token ID with `token.id`
+    }
+  });
+
+  document.getElementById('customButton').addEventListener('click', function(e) {
+    // Open Checkout with further options
+    handler.open({
+      name: 'Demo Site',
+      description: '2 widgets ($20.00)',
+      amount: 2000,
+      panelLabel: "Subscribe"
+    });
+    e.preventDefault();
+  });
+</script>
+       </div>
+      
+      <div class="col-md-3">
+             <h1>Join us!</h1>
+            <form method='POST' action=''>{% csrf_token %}
+                {{form.as_p}}
+                    
+                <input type='submit' class="btn btn-success btn-block">
+            </form>
+        </div>
+            
+           
+     
+            {% endblock %}
